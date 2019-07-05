@@ -124,3 +124,13 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CACHES = {
+    'default':{
+        'BACKEND':'django.core.cache.backends.db.DatabaseCache',
+                  'LOCATION':'session_table',
+                  'TIMEOUT':60*3,
+                  'KEY_PREFIX':'ymd',
+    }
+}
