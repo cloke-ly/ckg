@@ -16,3 +16,11 @@ def getcode(request):
         return render_json(code=ERR['OK'])
     else:
         return render_json(code=ERR['SMSErr'])
+
+
+
+
+
+
+
+
