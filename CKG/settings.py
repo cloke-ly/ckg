@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'User'
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'common.middleware.AuthMiddleware',
+    'common.middleware.MiddlewareMixin',
+    'common.middleware.timer'
 ]
 
 ROOT_URLCONF = 'CKG.urls'
@@ -134,3 +138,6 @@ CACHES = {
                   'KEY_PREFIX':'ymd',
     }
 }
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'upload')

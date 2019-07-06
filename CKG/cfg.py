@@ -11,8 +11,8 @@ YZX_SMS_PARAMS = {
 }
 
 # 七牛云配置
-QN_ACCESSKEY = 'kEM0sRR-meB92XU43_a6xZqhiyyTuu5yreGCbFtw'
-QN_SECRETKEY = 'QxTKqgnOb_UVldphU261qu9IdzmjkgGHh6GQVPPy'
-QN_BUCKET = 'sh1901'
+QN_ACCESSKEY = 'T5sAcOvjNSt5SV9u1CzuJKJErsK_UJ_i7nbtzayA'
+QN_SECRETKEY = 'ILhWc8FRH5mfNZwRqtbh6cYpLikbHkqdtWG2Q06G'
+QN_BUCKET = 'cloke'
 QN_BASE_URL = 'http://pu3zdepum.bkt.clouddn.com'
 

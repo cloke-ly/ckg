@@ -1,10 +1,14 @@
+import os
 import random
+from urllib.parse import urljoin
 
 import requests
+
 from django.core.cache import cache
 from common import keys
-from CKG import cfg
-
+from CKG import cfg, settings
+from libs.qn_cloud import upload_to_qn
+from tasks import celery_app
 
 
 def rand_vcode(length):
@@ -22,6 +26,28 @@ def send_vcode(phonenum):
         return True
     else:
         return False
+
+
+def save_avatar(user,upload_file):
+    filename = 'Avaatar-{}'.format(user.id)
+    filepath = os.path.join(settings.MEDIA_ROOT,filename)
+
+    with open(filepath,'wb')as fp:
+        for chunk in upload_file.chunks():
+            fp.write(chunk)
+    return filepath,filename
+
+@celery_app
+def upload_file(user,upload_file):
+    '''上传文件'''
+    filepath,filename = save_avatar(user,upload_file)
+    upload_to_qn(filepath,filename)
+
+    avatar_url = urljoin(cfg.QN_BASE_URL,filename)
+    user.avatar = avatar_url
+    user.save()
+
+    os.remove(filepath)
 
 if __name__ == '__main__':
     vcode = rand_vcode(6)
