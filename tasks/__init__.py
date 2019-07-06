@@ -4,7 +4,7 @@ from celery import Celery
 
 from tasks import config
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "swiper.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "CKG.settings")
 
 celery_app = Celery('worker')
 celery_app.config_from_object(config)
