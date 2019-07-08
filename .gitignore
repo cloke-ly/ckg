@@ -1,3 +1,10 @@
+# Custom
+logs/
+.idea/
+upload/
+.DS_Store
+.qiniu_pythonsdk_hostscache.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
