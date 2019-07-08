@@ -31,6 +31,10 @@ class User(models.Model):
     avatar = models.CharField(max_length=256,verbose_name='个人形象')
     location = models.CharField(max_length=16,choices=LOCATIONS,verbose_name='常居地')
 
+    vip_id = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'({self.id}:{self.nickname})'
 
     @property
     def profile(self):

@@ -35,7 +35,10 @@ class Swiped(models.Model):
         like_styles = ['like','superlike']
         return cls.objects.filter(uid=uid,sid=sid,stype__in=like_styles).exists()
 
-
+    @classmethod
+    def all_like_me(cls,uid):
+        like_styles = ['like','usperlike']
+        return cls.objects.filter(uid=uid,stype__in=like_styles).values_list('sid',flat=True)
 
 class Friend(models.Model):
     uid1 = models.IntegerField(verbose_name='用户 id')
