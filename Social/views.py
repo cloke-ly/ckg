@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from Social import logics
 from Social.models import Swiped
+from Vip.logics import need_perm
 from libs.http import render_json
 
 
@@ -17,6 +18,7 @@ def like(request):
     is_matched = logics.like_someone(request.user,sid)
     return render_json({'is_matched': is_matched})
 
+@need_perm('superlike')
 def super_like(request):
     sid = int(request.POST.get('sid'))
     is_matched = logics.superlike_someone(request.user, sid)
@@ -27,11 +29,13 @@ def dislike(request):
     sid = int(request.POST.get('sid'))
     Swiped.swipe(request.user.id, sid, 'dislike')
     return render_json()
-
+@need_perm('rewind')
 def rewind(request):
     logics.rewind_swiped(request.user)
     return render_json()
 
+
+@need_perm('show_like_me')
 def show_liked_me(request):
     return render_json()
 
