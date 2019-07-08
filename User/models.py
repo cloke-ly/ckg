@@ -3,6 +3,9 @@ import datetime
 from django.db import models
 
 # Create your models here.
+from Social.models import Friend
+
+
 class User(models.Model):
     '''个人信息'''
     SEX = (
@@ -35,8 +38,16 @@ class User(models.Model):
             self._profile, created = Profile.objects.get_or_create(id=self.id)
         return self._profile
 
+
+
+    @property
+    def friends(self):
+        friend_ids = Friend.my_friends_ids(self.id)
+        return User.objects.filter(id__in=friend_ids)
+
     def to_dict(self):
         return {
+            'id': self.id,
             'phonenum':self.phonenum,
             'nickname':self.nickname,
             'sex':self.sex,

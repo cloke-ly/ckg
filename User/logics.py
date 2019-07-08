@@ -8,7 +8,7 @@ from django.core.cache import cache
 from common import keys
 from CKG import cfg, settings
 from libs.qn_cloud import upload_to_qn
-from tasks import celery_app
+from   tasks import celery_app
 
 
 def rand_vcode(length):
@@ -37,7 +37,7 @@ def save_avatar(user,upload_file):
             fp.write(chunk)
     return filepath,filename
 
-@celery_app
+@celery_app.task
 def upload_file(user,upload_file):
     '''上传文件'''
     filepath,filename = save_avatar(user,upload_file)
@@ -46,8 +46,9 @@ def upload_file(user,upload_file):
     avatar_url = urljoin(cfg.QN_BASE_URL,filename)
     user.avatar = avatar_url
     user.save()
-
+    print(111)
     os.remove(filepath)
+    print(222)
 
 if __name__ == '__main__':
     vcode = rand_vcode(6)

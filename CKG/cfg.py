@@ -1,3 +1,8 @@
+
+REWIND_TIME = 300
+REWIND_TIMES = 3
+
+
 # 云之讯短信平台配置
 # http://docs.ucpaas.com/doku.php?id=%E7%9F%AD%E4%BF%A1:sendsms
 YZX_SMS_API = 'https://open.ucpaas.com/ol/sms/sendsms'
@@ -14,5 +19,5 @@ YZX_SMS_PARAMS = {
 QN_ACCESSKEY = 'T5sAcOvjNSt5SV9u1CzuJKJErsK_UJ_i7nbtzayA'
 QN_SECRETKEY = 'ILhWc8FRH5mfNZwRqtbh6cYpLikbHkqdtWG2Q06G'
 QN_BUCKET = 'cloke'
-QN_BASE_URL = 'http://pu3zdepum.bkt.clouddn.com'
+QN_BASE_URL = 'pubny86kw.bkt.clouddn.com'
 
